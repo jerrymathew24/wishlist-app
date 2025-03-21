@@ -41,7 +41,6 @@ showTodos.addEventListener("click", (e) => {
     );
     todoList = todoList.filter((todo) => todo.id !== delTodoKey);
     localStorage.setItem("todos", JSON.stringify(todoList)); //local storage
-    console.log(todoList);
     renderTodoList(todoList);
 });
 
@@ -52,14 +51,13 @@ function renderTodoList(todoList) {
             id,
             isCompleted
         }) =>
-        `<div class="todo relative"> <input id="item-${id}" data-key=${id} class="t-checkbox t-pointer" type="checkbox" ${
-        isCompleted ? "checked" : ""
-      }> <label data-key=${id} class="todo-text t-pointer ${
-        isCompleted ? "checked-todo" : ""
-      }" for="item-${id}"> ${todo} </label> <button class="absolute right-0 button cursor">
-      <span data-todokey=${id}  class="del-btn material-icons-outlined">delete</span>
-            </button> </div>`
+        `<div class="todo relative"> 
+            <input id="item-${id}" data-key=${id} class="t-checkbox t-pointer" type="checkbox" ${isCompleted ? "checked" : ""}> 
+            <label data-key=${id} class="todo-text t-pointer ${isCompleted ? "checked-todo" : ""}" for="item-${id}"> ${todo} </label> 
+            <button class="absolute right-0 button cursor">
+                <span data-todokey=${id}  class="del-btn material-icons-outlined">delete</span>
+            </button> 
+        </div>`
     );
 }
-
 renderTodoList(todoList);
