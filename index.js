@@ -11,7 +11,7 @@ let todoInput = document.querySelector('.input')
 let addTodoButton = document.querySelector('.button')
 let showTodos = document.querySelector('.todos-container')
 let localData = JSON.parse(localStorage.getItem("todos")) //local storage
-let todoList = []
+let todoList = localData || []
 
 
 addTodoButton.addEventListener("click", (e) => {
@@ -41,6 +41,7 @@ showTodos.addEventListener("click", (e) => {
     );
     todoList = todoList.filter((todo) => todo.id !== delTodoKey);
     localStorage.setItem("todos", JSON.stringify(todoList)); //local storage
+    console.log(todoList);
     renderTodoList(todoList);
 });
 
@@ -60,4 +61,5 @@ function renderTodoList(todoList) {
         </div>`
     );
 }
+
 renderTodoList(todoList);
